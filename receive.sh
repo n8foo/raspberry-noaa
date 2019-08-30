@@ -1,13 +1,21 @@
 #!/bin/sh
 
 ## debug
-# set -x
+ set -x
 
 . ~/.noaa.conf
 
 ## sane checks
 if [ ! -d ${NOAA_HOME} ]; then
 	mkdir -p ${NOAA_HOME}
+fi
+
+if [ ! -d ${NOAA_DATA} ]; then
+	mkdir -p ${NOAA_DATA}
+fi
+
+if [ ! -d ${NOAA_RUN} ]; then
+	mkdir -p ${NOAA_RUN}
 fi
 
 if [ ! -d ${NOAA_OUTPUT} ]; then
@@ -68,9 +76,9 @@ for i in $ENHANCEMENTS; do
 done
 
 if [ "${SUN_ELEV}" -gt "${SUN_MIN_ELEV}" ]; then
-	python2 ${NOAA_HOME}/post.py "$1 ${START_DATE}" "$7" ${NOAA_OUTPUT}/image/${FOLDER_DATE}/$3-MCIR-precip.jpg ${NOAA_OUTPUT}/image/${FOLDER_DATE}/$3-MSA-precip.jpg ${NOAA_OUTPUT}/image/${FOLDER_DATE}/$3-HVC-precip.jpg ${NOAA_OUTPUT}/image/${FOLDER_DATE}/$3-HVCT-precip.jpg 
+	python2 ${NOAA_HOME}/post.py "$1 ${START_DATE}" "$7" ${NOAA_OUTPUT}/image/${FOLDER_DATE}/$3-MCIR-precip.jpg ${NOAA_OUTPUT}/image/${FOLDER_DATE}/$3-MSA-precip.jpg ${NOAA_OUTPUT}/image/${FOLDER_DATE}/$3-HVC-precip.jpg ${NOAA_OUTPUT}/image/${FOLDER_DATE}/$3-HVCT-precip.jpg
 else
-	python2 ${NOAA_HOME}/post.py "$1 ${START_DATE}" "$7" ${NOAA_OUTPUT}/image/${FOLDER_DATE}/$3-MCIR-precip.jpg ${NOAA_OUTPUT}/image/${FOLDER_DATE}/$3-MCIR.jpg 
+	python2 ${NOAA_HOME}/post.py "$1 ${START_DATE}" "$7" ${NOAA_OUTPUT}/image/${FOLDER_DATE}/$3-MCIR-precip.jpg ${NOAA_OUTPUT}/image/${FOLDER_DATE}/$3-MCIR.jpg
 fi
 
 rm ${NOAA_AUDIO}/audio/*

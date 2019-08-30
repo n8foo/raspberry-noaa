@@ -6,8 +6,8 @@ import sys
 date = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(sys.argv[1])+3*60*60))
 
 obs=ephem.Observer()
-obs.lat=''
-obs.long=''
+obs.lat='36.1627'
+obs.long='-86.7816'
 obs.date = date
 
 sun = ephem.Sun(obs)
