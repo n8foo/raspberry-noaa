@@ -4,6 +4,7 @@
  set -x
 
 . ~/.noaa.conf
+SAT_MIN_ELEV=10
 
 PREDICTION_START=$(cd ${NOAA_DATA} ; predict -t predict/weather.txt -p "${1}" | head -1)
 PREDICTION_END=$(cd ${NOAA_DATA} ; predict -t predict/weather.txt -p "${1}" | tail -1)
@@ -22,7 +23,6 @@ while [ "$(date --date="@${var2}" +%D)" = "$(date +%D)" ]; do
 	OUTDATE=$(date --date="TZ=\"UTC\" ${START_TIME}" +%Y%m%d-%H%M%S)
 
 	if [ "${MAXELEV}" -gt "${SAT_MIN_ELEV}" ]
-	#if [ "${MAXELEV}" -gt 19 ]
 	then
 		SATNAME=$(echo "$1" | sed "s/ //g")
 		echo ${SATNAME} "${OUTDATE}" "$MAXELEV"

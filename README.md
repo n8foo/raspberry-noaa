@@ -5,8 +5,8 @@ Most of the code and setup stolen from: [Instructables](https://www.instructable
   - Nginx webserver to show images.
   - Timestamp and satellite name over every image.
   - WXToIMG configured to create several images (HVC,HVCT,MCIR, etc).
-  - Pictures are posted to Twitter. See more at [argentinasat twitter account](https://twitter.com/argentinasat).
-  - [Wiki](https://github.com/reynico/raspberry-noaa/wiki) is updated!
+  - Pictures are posted to Twitter. 
+  - [Wiki](https://github.com/n8foo/raspberry-noaa/wiki) is updated!
   - Audio files are stored on a RAMFS partition. Happen to had some glitches on image reception
 
 ### Manual work
